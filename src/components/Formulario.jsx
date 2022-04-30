@@ -26,13 +26,7 @@ const Boton = styled.button`
     }
 `
 
-const Contenedor = styled.div`
-    margin: 0 auto;
-    max-width: 900px;
-    width: 90%;
-`
-
-const Formulario = ({}) => {
+const Formulario = ({monedaSeleccionada, setMonedaSeleccionada}) => {
 
     const monedas = [
 
@@ -82,6 +76,8 @@ const Formulario = ({}) => {
 
         e.preventDefault()
 
+        setMonedaSeleccionada({})
+
         if ([moneda, criptomoneda].includes('')) {
 
             setError(true)
@@ -91,11 +87,15 @@ const Formulario = ({}) => {
         }
 
         setError(false)
+        setMonedaSeleccionada({
+            moneda,
+            criptomoneda
+        })
 
     }
 
   return (
-    <Contenedor>
+    <>
         <Header>
             Cotiza Criptomonedas al Instante
         </Header>
@@ -117,7 +117,7 @@ const Formulario = ({}) => {
                 Cotizar
             </Boton>
         </form>
-    </Contenedor>
+    </>
   )
 }
 
